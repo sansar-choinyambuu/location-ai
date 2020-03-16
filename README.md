@@ -12,7 +12,7 @@ _Provides location intelligence derived from machine learning on publicly availa
 
 ## Usage
 * `python api.py`
-* Browse [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+* Swagger documentation for REST API [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
 
 ## Data source 
