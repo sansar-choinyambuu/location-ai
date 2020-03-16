@@ -1,3 +1,5 @@
+from json import loads
+
 from shapely.geometry import Polygon, Point, MultiPolygon
 
 from extractors.osm_extractor import OSMExtractor
@@ -41,9 +43,12 @@ class Scouter:
     def similarly_located_restaurants(self, lon, lat):
         similar_locations = self.ground.get_similar_locations(lon, lat)
 
-        restaurants = self.tripadvisor_extractor.get_ranked_restaurants_in_locations(similar_locations).iloc[:10]
-        return restaurants.loc[:, restaurants.columns != 'point'].to_json(orient = "records")
-
+        if len(similar_locations):
+            restaurants = self.tripadvisor_extractor.get_ranked_restaurants_in_locations(similar_locations)
+            json_str = restaurants.loc[:, restaurants.columns != 'point'].to_json(orient = "records")
+            return loads(json_str)
+        else:
+            return {"result": "0 similar location was found"}
 
 if __name__ == "__main__":
     scouter = Scouter()
