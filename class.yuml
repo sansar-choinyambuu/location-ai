@@ -11,10 +11,9 @@
 [Demographics Extractor]-.-[note: demographic_extractor.py{bg:wheat}] 
 
 [Machine Learning Model Builder]-.-[note: model_builder.py{bg:wheat}]
-[Machine Learning Model Builder]-.-[note: Feature selection with Recursive Feature Elimination|Data transformation with log1p|Data normalization with MinMaxScaler{bg:green}]
-[Logistic Regression Model]-.-[note: Predicts chances of successful restaurant for given location|successful restaurant - TripAdvisor ranking in top 30%{bg:green}] 
-[Cluster Model]-.-[note: Clusters locations according to their similarity{bg:green}] 
-
+[Machine Learning Model Builder]-.-[note: Data transformation;with log1p|Data normalization;with MinMaxScaler|Feature selection;with Recursive Feature Elimination{bg:green}]
+[Logistic Regression Model]-.-[note: Predicts chances of successful restaurant;for given location|successful restaurant:;TripAdvisor ranking in top 30%{bg:green}] 
+[Cluster Model]-.-[note: Clusters similar locations together{bg:green}] 
 
 [REST API]<>-calls*>[Location Intelligence Engine]
 [Location Intelligence Engine]<>->[City]
@@ -26,6 +25,3 @@
 [City]<>-builds model on the data*>[Machine Learning Model Builder]
 [Machine Learning Model Builder]->[Logistic Regression Model]
 [Machine Learning Model Builder]->[Cluster Model]
-
-
-

@@ -160,8 +160,12 @@ class ScoutingGround:
     def get_similar_locations(self, lon, lat):
         point = Point(lon, lat) 
         clusters = self.df.apply(lambda row: row["cluster"] if row["area"].intersects(point) else None, axis = 1)
-        cluster = clusters[clusters.first_valid_index()]
-
-        return self.df[self.df["cluster"] == cluster]["area"]
+        first_valid_cluster_index = clusters.first_valid_index()
+        print("first valid index: ", first_valid_cluster_index)
+        if first_valid_cluster_index:
+            cluster = clusters[first_valid_cluster_index]
+            return self.df[self.df["cluster"] == cluster]["area"]
+        else:
+            return None
 
         
