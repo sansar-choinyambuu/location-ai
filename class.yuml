@@ -1,0 +1,31 @@
+[REST API|GET peers-insight();GET location-intelligence()]-.-[note: api.py{bg:wheat}]
+
+[Location Intelligence Engine]-.-[note: scouter.py{bg:wheat}] 
+
+[City]-.-[note: scouting_ground.py{bg:wheat}] 
+[CityCell]-.-[note: City is divided into 200m x 200m cells|Demographics data;proportion of foreigners;employees;...|OSM data;number of streets;number of public buildings;...|TripAdvisor data;number of restaurants;any successful restaurant;...{bg:green}] 
+
+[Data Extractors]
+[Open Street Map Extractor]-.-[note: osm_extractor.py{bg:wheat}]
+[TripAdvisor Extractor]-.-[note: ta_extractor.py{bg:wheat}] 
+[Demographics Extractor]-.-[note: demographic_extractor.py{bg:wheat}] 
+
+[Machine Learning Model Builder]-.-[note: model_builder.py{bg:wheat}]
+[Machine Learning Model Builder]-.-[note: Feature selection with Recursive Feature Elimination|Data transformation with log1p|Data normalization with MinMaxScaler{bg:green}]
+[Logistic Regression Model]-.-[note: Predicts chances of successful restaurant for given location|successful restaurant - TripAdvisor ranking in top 30%{bg:green}] 
+[Cluster Model]-.-[note: Clusters locations according to their similarity{bg:green}] 
+
+
+[REST API]<>-calls*>[Location Intelligence Engine]
+[Location Intelligence Engine]<>->[City]
+[City]++-consists of->[CityCell]
+[City]<>-extracts data*>[Data Extractors]
+[Data Extractors]->[Open Street Map Extractor]
+[Data Extractors]->[TripAdvisor Extractor]
+[Data Extractors]->[Demographics Extractor]
+[City]<>-builds model on the data*>[Machine Learning Model Builder]
+[Machine Learning Model Builder]->[Logistic Regression Model]
+[Machine Learning Model Builder]->[Cluster Model]
+
+
+
