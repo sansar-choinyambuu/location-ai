@@ -128,7 +128,7 @@ class OSMExtractor:
         parkings = self.df[self.df["amenity"].isin(["parking"])].copy()
         hospitals = self.df[self.df["amenity"].isin(["hospital"])].copy()
         entertainments = self.df[self.df["amenity"].isin(["arts_centre", "cinema", "theatre"])].copy()
-        leisures = self.df[self.df["amenity"].notna()].copy()
+        leisures = self.df[self.df["leisure"].notna()].copy()
         bars = self.df[self.df["amenity"].isin(["bar", "nightclub", "pub", "biergarten"])].copy()
         foods = self.df[self.df["amenity"].isin(["restaurant", "cafe", "fast_food"])].copy()
         supermarkets = self.df[self.df["shop"].isin(["supermarket"])].copy()
